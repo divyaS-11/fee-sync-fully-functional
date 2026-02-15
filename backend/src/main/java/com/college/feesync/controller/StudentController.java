@@ -1,7 +1,7 @@
 package com.college.feesync.controller;
 
 import com.college.feesync.model.Student;
-import com.college.feesync.repository.StudentRepository;
+import com.college.feesync.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,18 +12,17 @@ import java.util.List;
 public class StudentController {
 
     @Autowired
-    private StudentRepository repository;
+    private StudentService service;
 
-    // Add student (simulate payment update)
+    // Add student / update fee status
     @PostMapping
     public Student addStudent(@RequestBody Student student) {
-        return repository.save(student);
+        return service.saveStudent(student);
     }
 
     // Get all students
     @GetMapping
     public List<Student> getAllStudents() {
-        return repository.findAll();
+        return service.getAllStudents();
     }
 }
-
