@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transactions</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="admin-dashboard.html">Dashboard</a>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h2>Transaction List</h2>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+
+            <tbody id="paymentTable"></tbody>
+        </table>
+        <script>
+            window.onload = function() {
+                let payments = JSON.parse(localStorage.getItem("payments")) || [];
+                let rows = "";
+
+                payments.forEach(function(p) {
+                    rows += "<tr>"
+                          + "<td>" + p.id + "</td>"
+                          + "<td>" + p.name + "</td>"
+                          + "<td>" + p.amount + "</td>"
+                          + "<td>" + p.date + "</td>"
+                          + "</tr>";
+                });
+
+                document.getElementById("paymentTable").innerHTML = rows;
+            };
+        </script>
+
+    </div>
+</div>
+
+</body>
+</html>
